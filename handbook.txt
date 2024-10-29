@@ -1,0 +1,556 @@
+<-- Getting Started -->
+
+The best place to start with Advertwhirl is either the "Simple Ad Rotation" tutorial or the "Sharing Ad Slots With a Guest Blogger" tutorial.  They will walk you through getting a campaign setup.
+
+If you'd prefer to just jump in feet first, here is a short checklist to get you going.
+
+<ol style="list-styletype:decimal; padding:5px 15px;"><strong>Getting Started</strong>
+	<li>Setup your Ad Sources
+		<ul style="list-style:circle; padding-left:15px;">
+			<li>If you use Adsense you can go to "Settings" to configure Advertwhirl to automotically pull in your Adsense Ad Units as Ad Sources</li>
+			<li>You can go to "Ad Sources" to configure any other local ads you want</li>
+		</ul></li>
+	<li>Create an Ad Campaign
+		<ul style="list-style-type:lower-alpha; padding-left:15px;">
+			<li>Setup an Allocation
+				<ul style="list-style-type:lower-roman; padding-left:15px;">
+					<li>Add the ad sources you want the allocation to rotate through</li>
+					<li>Set the weights for how you want the ad sources to rotate</li>
+				</ul>
+			</li>
+			<li>Create any additional Allocations you need (if you want to rotate different sets of ads in different sections of your blog, if you have guest bloggers etc...)
+				<ul style="list-style-type:lower-roman; padding-left:15px;">
+					<li>Add the ad sources you want the allocation to rotate through</li>
+					<li>Set the weights for how you want the ad sources to rotate</li>
+					<li>Add some rules so Advertwhirl can select which Allocation should fill which Ad Slot</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li> Place your Ad Campaigns somewhere
+		<ul>
+			<li>The quickest method is now right in the Campaign Editor, a couple of checks and and Advertwhirl will auto place the campaign where you want.</li>
+			<li>The Advertwhirl Campaign Widget under "Appearance" -> Widgets will let you place an Ad Campaign anywhere you can put a sidebar widget</li>
+			<li>The Advertwhirl Shortcode will let you place ads in the Post Editor [advertwhirl campaign="Your_Campaign"]</li>
+			<li>The functions advertwhirl_get_ad("Your_Campaign") and advertwhirl_print_ad("Your_Campaign") will let yo precisely place ads, if you are up to the task of editing your themes template files</li>
+			<li>You can place ads external to your site through a url using the external ads feature.  http://www.yourdomain.com/ads/Your_Campaign</li>
+			<li>The "Autoplacing Ad Campaigns" and "Adding Ads to Your Posts" tutorials give more details on how to place your ads</li>
+		</ul>
+	</li>
+</ol>
+
+Here are a couple of bullet points to explain how Ad Campaigns are structured.  A more detailed explanation can be found in the "Campaigns, Allocations And Rules" tutorial.<br/>
+
+<ul style="list-style:disc; padding:5px 15px;"><strong>Ad Campaigns</strong>
+	<li>An Ad Campaign fills Ad Slots with Ad Units</li>
+	<li>Before you create an Ad Campaign you will need to set up your Ad Sources
+		<ul style="list-style:circle; padding-left:15px;">
+			<li>If you use Adsense you can go to "Settings" to configure Advertwhirl to automotically pull in your Adsense Ad Units as Ad Sources</li>
+			<li>You can go to "Ad Sources" to configure any other local ads you want</li>
+		</ul></li>
+	<li>An Ad Campaign uses rules to match Allocations to empty Ad Slots</li>
+	<li>An Allocation rotates Ad Sources based on weight to fill empty Ad Slots</li>
+</ul>
+
+<-- Autoplacing Ad Campaigns -->
+
+<-- Simple Ad Rotation -->
+<a title="The Situation" name="situation"></a>
+<h4>The Situation</h4>
+You've installed the Advertwhirl ad management plugin for WordPress, You've taken a quick look at <a title="Campaigns, Allocations and Rules Tutorial" href="http://www.mobilesentience.com/2011/05/02/campaigns-allocations-and-rules-oh-my/">Campaigns, allocations and rules</a> still feel a little daunted.  All you want to do is rotate ads between adsense and a local banner you have setup for one of your products.  You're not quite sure you want to be messing with rules and regular expressions and that other mumbo jumbo.
+
+<a title="The Solution" name="solution"></a>
+<h4>The Solution</h4>
+Advertwhirl is quite flexible and lets you manage your advertising campaigns as simply or complexly as you require.  If you just want to rotate between a few different ad sources Advertwhirl will help you do that with out the need for any complex configuration.
+
+<a title="The Nuts and Bolts" name="nutsandbolts"></a>
+<h4>The Nuts and Bolts</h4>
+The steps are pretty simple configure Advertwhirl to connect to your Adsense account, add a local ad source for the banner, create an ad campaign with a single allocation that has two ad source(an Adsense Ad Unit and your banner) and no rules.  Thats it and this tutorial will walk you through it step by step in less just a couple minutes, unless you are one of those people that tweets everything you do or take a break to become Mayor of this tutorial.
+
+<a title="==Configure Adsense" name="configure-adsense"></a>
+<h5>Configure Adsense</h5>
+Configuring Adsense is super easy.  Your Adsense username and your Adsense password are all you need.  Lets do it!
+<ol>
+	<li>Go to your WordPress blogs admin page</li>
+	<li>In the admin "Settings" menu go to the Advertwhirl entry<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/admin-settings.png"><img class="alignnone size-thumbnail wp-image-584" title="admin-settings" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/admin-settings.png" alt="" width="92" height="150" /></a></li>
+	<li>Go to the Advertwhirl Settings tab<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/adsense-settings.png"><img class="alignnone size-thumbnail wp-image-585" title="adsense-settings" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/adsense-settings-e1304447353619-150x150.png" alt="" width="150" height="150" /></a></li>
+	<li>Go to the "Adsense Settings" panel right below "General Settings" and fill in your username and password for Adsense and hit Update.
+<ul>
+	<li>For security reasons your Adsense password will not be displayed and the field will remain blank if you come back to the settings page in the future.  Don't worry it's still there.</li>
+</ul>
+</li>
+	<li>You can leave the other settings alone for now, they won't effect anything you are doing in this tutorial.</li>
+</ol>
+That is it.  You can now access your Adsense ads directly in Advertwhirl, as well as your Adsense Statistics.
+
+<a title="==Add the Banner" name="add-the-banner"></a>
+<h5>Add the Banner</h5>
+Adding your own banner is just as easy as setting Advertwhirl up to use Ad Sense.
+<ol>
+	<li>Go to the "Local Ads" tab next to the "Settings" tab on the left.</li>
+	<li>Click on the "Ad Source" Button
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/ad-local-source.png"><img class="alignnone size-thumbnail wp-image-589" title="ad-local-source" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/ad-local-source-150x70.png" alt="" width="150" height="70" /></a></li>
+	<li>Fill in a name for your banner, this is what will appear in the dropdown list when you go to add it to your Allocation later.</li>
+	<li>Fill in any notes to yourself in the Description field.</li>
+	<li>Change the type from Ad Type from "URL" to "Inline Code"</li>
+	<li>Paste the html for your banner into the Inline Code textarea</li>
+	<li>Click "Add Source" to save your changes
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-local-source.png"><img class="alignnone size-thumbnail wp-image-590" title="create-local-source" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-local-source-e1304448555429-150x96.png" alt="" width="150" height="96" /></a></li>
+</ol>
+<span style="font-size: small;"><span style="line-height: 24px;">The code I use in the the image consists of two parts, you can use to get you started if html is not your thing-diggity.</span></span>
+
+The first bit is only appropriate if you have Google Analytics setup for your site.  If so you can paste your GA code in place of mine or you could modify mine.  I am using Asynchronous Tracking.  If you don't have Google Analytics setup for your site or you don't want to track the banner you can go ahead and skip this part and go onto the next bit.
+
+If you use the Asynchronous Tracking code below you need to replace UA-XXXXX-X with your web property id.  You can find it by logging into your Google Analytics Account, the web property id for each of your web profiles is listed to the right of the profiles name.
+
+You will also need to replace ".YOURDOMAIN.COM" with the domain for your web profile.  The stuff to the left of the "www", don't forget the first "."!
+
+<div class="source-code">&lt;script type="text/javascript"&gt;<br/>
+var _gaq = _gaq || [];<br/>
+_gaq.push(['_setAccount', 'UA-XXXXX-X']);<br/>
+_gaq.push(['_trackPageview']);<br/>
+_gaq.push(['_setDomainName', '.YOURDOMAIN.COM']);<br/>
+_gaq.push(['_setAllowLinker', true]);<br/>
+_gaq.push(['_setAllowHash', false]);<br/>
+<br/>
+(function() {<br/>
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;<br/>
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';<br/>
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);<br/>
+})();<br/>
+&lt;/script&gt;<br/>
+</div>
+
+The second bit of code in my local ad is for the banner itself.  Again, if you have your own html you wish to use go ahead.  This is just here for those needing a hand getting started.
+
+The following code will display a banner image and open a link when the visitor clicks the image.
+
+Use this one if you want the link to open in the same window/tab as the one where the image is displayed.  This will take the visitor away from the post where the ad is displayed.
+
+<div class="source-code">&lt;a href="LINK_WHERE_YOU_WANT_BANNER_TO_GO"&gt;&lt;img src="LINK_WHERE_THE_BANNER_IMAGE_LIVES" alt="" /&gt;&lt;/a&gt;</div>
+
+Use this one if you want the link to open in a new window or tab and leave the visitor on the post where the ad is displayed.
+
+<div class="source-code">&lt;a href="LINK_WHERE_YOU_WANT_BANNER_TO_GO" target="_blank"&gt;&lt;img src="LINK_WHERE_THE_BANNER_IMAGE_LIVES" alt="" /&gt;&lt;/a&gt;</div>
+
+Which either one you choose to use there are two parts that need to be changed.  The instructions are exactly the same for both.
+<ol>
+	<li>Change "LINK_WHERE_YOU_WANT_BANNER_TO_GO" to the URL for the web page you wish to open when the banner is clicked.  In the example image I the banner for Advertwhirl open the plugin page for Advertwhirl ("http://wordpress.org/extend/plugins/advertwhirl/")</li>
+	<li>Change "LINK_WHERE_THE_BANNER_IMAGE_LIVES" to the location of the banner image on your website, or whatever site it is located on.  In the example image the banner is located on the Mobile Sentience website("http://www.mobilesentience.com/banners/advertwhirl-take-charge-468x60.png")</li>
+</ol>
+<span style="font-size: small;"><span style="line-height: 24px;">Don't forget to leave the quotes.</span></span>
+
+<span style="font-size: small;"><span style="line-height: 24px;">That's it.  Time to create the campaign.</span></span>
+
+<a title="==Create the Ad Campaign" name="create-the-ad-campaign"></a>
+<h5>Create the Ad Campaign</h5>
+Adding your own banner is just as easy as setting Advertwhirl up to use Ad Sense.
+<ol>
+	<li>Go to the "Campaigns" tab next to the "Local Ads" tab on the left.</li>
+	<li>Click on the "Ad Campaign" Button</li>
+	<li>Give the Campaign a name.  This is how you will identify which Campaign you wish to use to fill an Ad Slot.The name shouldn't have any spaces or special characters.</li>
+	<li>Put any notes which will help you remember what the purpose of this Campaign is in the Description field</li>
+	<li>There is already an Allocation created for you and all you will be needing is the one.</li>
+	<li>Fill in a Description for the Allocation if you want.  It's just a way for you to keep track of what is what in complex configurations.  For this simple one it won't really be helpful and you can leave it blank if you want.</li>
+	<li>Select the Adsense Ad unit that you wish to use</li>
+	<li>Click "Add Advertisement Source"</li>
+	<li>Select your banner ad.</li>
+	<li>Set your weights.  By default the weights are both 1, meaning every other Ad Slot will be filled either with an Adsense ad or your banner.  In the example photo I set a weight of 3 for the Adsense ad and 1 for the banner ad.  So 3 Ad Slots would be filled from the Adsense Ad Sourcce then 1 from the local banner Ad Source.  Another way to look at it is with a 1-1 weight 50% of the Ad Slots are filled from each source and with a 3-1 75% are filled with the Adsense Ad Source and 25% with the local banner Ad Source.</li>
+	<li>Click "Save Campaign" and you are done</li>
+</ol>
+<span style="font-size: small;"><span style="line-height: 24px;"><a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-campaign.png"><img class="alignnone size-thumbnail wp-image-600" title="create-campaign" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-campaign-e1304452557820-150x150.png" alt="" width="150" height="150" /></a>
+</span></span>
+
+<a title="==Displaying Your Ads" name="displaying-your-ads"></a>
+<h5>Displaying Your Ads</h5>
+Everything is configured and done, but I suppose you're interested in using what you setup.
+
+You have a few options
+
+If you just want to get going with as little hassle as possible you can put a shortcode in your posts where ever you want ads from your new Campaign to appear.  The shortcode is listed below, you will need to change YOUR_CAMPAIGN to the name you gave the Campaign in step 3 of <a href="#create-the-ad-campaign">creating the campaign</a>.
+
+<div class="source-code">[advertwhirl campaign=YOUR_CAMPAIGN]</div>
+
+If you don't want to display the ads in your posts but would rather put them in your sidebar you can use the Advertwhirl widget.  Just add it to a sidebar or anywhere else in your theme where widgets are enabled and select the campaign you which it to display ads from.
+
+Or, if you are adventurous you can read the more advanced tutorial "<a title="Inserting Ads in Posts" href="http://www.mobilesentience.com/2011/05/01/automatic-insertion-of-advertisements-in-wordpress-posts/">Automatic Insertion of Advertisements in WordPress Posts</a>" on how to modify your theme template files to automatically insert your ads from your new Campaign in your posts.
+
+<a title="Download Advertwhirl" name="download"></a>
+<h5>Download Advertwhirl</h5>
+[download id="4" format="2" autop="false"]
+
+<a title="References" name="reference"></a>
+<h5>References</h5>
+<a title="Advertwhirl plugin page - Mobile Sentience" href="http://www.mobilesentience.com/software/oss/advertwhirl/">Mobile Sentience Advertwhirl page</a><br/>
+<a title="Advertwhirl plugin page - WordPress Gallery" href="http://wordpress.org/extend/plugins/advertwhirl/">Advertwhirl in the WordPress gallery</a><br/>
+<a title="Install Instructions" href="http://www.mobilesentience.com/2011/04/24/reseller-branding-of-your-wordpress-site/">Tutorial with instructions for installing Advertwhirl Plugin</a><br/>
+<a title="Inserting Ads in Posts" href="http://www.mobilesentience.com/2011/05/01/automatic-insertion-of-advertisements-in-wordpress-posts/">Automatic Insertion of Advertisements in WordPress Posts</a><br/>
+<a title="Inserting Ads in Posts" href="http://www.mobilesentience.com/2011/05/02/campaigns-allocations-and-rules-oh-my/">Campaigns, Allocations and Rules oh my!</a><br/>
+
+<-- Sharing Ad Slots With a Guest Blogger -->
+
+<h4>The Situation</h4>
+You've installed the Advertwhirl ad management plugin for WordPress, perhaps using the <a title="Install Instructions" href="http://www.mobilesentience.com/2011/04/24/reseller-branding-of-your-wordpress-site/">installation instructions in this tutorial</a>.  You powered through the <a title="Inserting Ads in Posts" href="http://www.mobilesentience.com/2011/05/02/campaigns-allocations-and-rules-oh-my/">campaigns, allocations and rules</a> tutorial and setup your first campaign.  You modified your blogs theme to <a title="Inserting Ads in Posts" href="http://www.mobilesentience.com/2011/05/01/automatic-insertion-of-advertisements-in-wordpress-posts/">automatically insert advertisements</a> from your campaign in your blog posts.
+
+The world is good, you're successfully monetizing your blog and getting ready to make a big push to expand your viewership.  And then a pesky guest blogger asks for a share of the ad slots for any posts she writes.  She's made a compelling argument, and your only retort is "er...durrr... But, I don't know how to do that."
+
+<h4>The Solution</h4>
+Advertwhirl is quite flexible and lets you manage your advertising campaigns as simply or complexly as you require.  Ad sharing for guest bloggers is one of the easiest configurations you can do with Advertwhirl.
+
+<h4>The Nuts and Bolts</h4>
+The steps are pretty straight forward and not all that different then the <a title="Simple Two Affiliate Ad Rotation Tutorial" href="http://www.mobilesentience.com/2011/05/03/simple-two-affiliate-ad-rotation/">"Simple Two Affiliate Ad Rotation" tutorial</a>.  Setup your ads, create a campaign with two allocations, one for posts written by your guest blogger and on for any other posts.  Set the weights and ad a rule and you're good to go.
+
+<h5>Setup the Advertisements</h5>
+Setting up the ads is only slightly more complicated then in the <a title="Simple Two Affiliate Ad Rotation Tutorial" href="http://www.mobilesentience.com/2011/05/03/simple-two-affiliate-ad-rotation/">"Simple Two Affiliate Ad Rotation" tutorial</a>.  You need to ad your ads and your guest bloggers ad.
+
+First lets setup your ads using adsense.  If you don't use adsense you can follow the steps for setting up a local ad source for your guest blogger to setup a local ad source for yourself.
+
+Here is a recap of configuring Adsense from the <a title="Simple Two Affiliate Ad Rotation Tutorial" href="http://www.mobilesentience.com/2011/05/03/simple-two-affiliate-ad-rotation/">"Simple Two Affiliate Ad Rotation" tutorial</a>.  All you will need is your Adsense username and your Adsense password.
+<ol>
+	<li>Go to your WordPress blogs admin page</li>
+	<li>In the admin "Settings" menu go to the Advertwhirl entry<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/admin-settings.png"><img class="alignnone size-thumbnail wp-image-584" title="admin-settings" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/admin-settings.png" alt="" width="92" height="150" /></a></li>
+	<li>Go to the Advertwhirl Settings tab<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/adsense-settings.png"><img class="alignnone size-thumbnail wp-image-585" title="adsense-settings" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/adsense-settings-e1304447353619-150x150.png" alt="" width="150" height="150" /></a></li>
+	<li>Go to the "Adsense Settings" panel right below "General Settings" and fill in your username and password for Adsense and hit Update.
+<ul>
+	<li>For security reasons your Adsense password will not be displayed and the field will remain blank if you come back to the settings page in the future.  Don't worry it's still there.</li>
+</ul>
+</li>
+	<li>You can leave the other settings alone for now, they won't effect anything you are doing in this tutorial.</li>
+</ol>
+Now that Adsense is setup lets get a local ad setup for you guest blogger.
+
+Adding an advertisement for your guest blogger is just as easy as setting Advertwhirl up to use Ad Sense.  There are two options at this time.  If your guest blogger provided you with html or javascript code use option one, if she gave you a url option two is what you'll want.
+
+Option one to create a local ad from html or javascript code.
+<ol>
+	<li>Go to the "Local Ads" tab next to the "Settings" tab on the left.</li>
+	<li>Click on the "Ad Source" Button
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/ad-local-source.png"><img class="alignnone size-thumbnail wp-image-589" title="ad-local-source" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/ad-local-source-150x70.png" alt="" width="150" height="70" /></a></li>
+	<li>Fill in a name for your guest bloggers advertisement, this is what will appear in the dropdown list when you go to add it to your Allocation later.</li>
+	<li>Fill in any notes to yourself in the Description field.</li>
+	<li>Change the type from Ad Type from "URL" to "Inline Code"</li>
+	<li>Paste the html/javascript code your guest blogger gave you into the Inline Code textarea</li>
+	<li>Click "Add Source" to save your changes
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-local-source.png"><img class="alignnone size-thumbnail wp-image-590" title="create-local-source" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-local-source-e1304448555429-150x96.png" alt="" width="150" height="96" /></a></li>
+</ol>
+Option two to create a local ad from a url.
+<ol>
+	<li>Go to the "Local Ads" tab next to the "Settings" tab on the left.</li>
+	<li>Click on the "Ad Source" Button
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/ad-local-source.png"><img class="alignnone size-thumbnail wp-image-589" title="ad-local-source" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/ad-local-source-150x70.png" alt="" width="150" height="70" /></a></li>
+	<li>Fill in a name for your guest bloggers advertisement, this is what will appear in the dropdown list when you go to add it to your Allocation later.</li>
+	<li>Fill in any notes to yourself in the Description field.</li>
+	<li>Leave the Ad Type set to "URL"</li>
+	<li>Check "wrap in iframe"</li>
+	<li>Paste the url your guest blogger gave you into the url textarea</li>
+	<li>Click "Add Source" to save your changes
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-local-source.png"><img class="alignnone size-thumbnail wp-image-590" title="create-local-source" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-local-source-e1304448555429-150x96.png" alt="" width="150" height="96" /></a></li>
+</ol>
+That is it, your ads and your guest bloggers ads are now setup and you are ready to rock onto the next step.
+
+<a title="=Create the Campaign" name="campaign"></a>
+<h5>Create the Campaign</h5>
+Creating an ad campaign for guest bloggers takes only slightly longer then setting up<a title="Simple Two Affiliate Ad Rotation Tutorial" href="http://www.mobilesentience.com/2011/05/03/simple-two-affiliate-ad-rotation/">"Simple Two Affiliate Ad Rotation"</a> and is really no more difficult.  You will need at least two allocations.  One allocation for each of your guest bloggers and one allocation for all posts not written by a guest blogger.
+<ol>
+	<li>Go to the "Campaigns" tab next to the "Local Ads" tab on the left.</li>
+	<li>Click on the "Ad Campaign" Button</li>
+	<li>Give the Campaign a name.  This is how you will identify which Campaign you wish to use to fill an Ad Slot.The name shouldn't have any spaces or special characters.</li>
+	<li>Put any notes which will help you remember what the purpose of this Campaign is in the Description field</li>
+	<li>There is already an Allocation created for you, use this one for your guest blogger.</li>
+	<li>Fill in a Description for the Allocation if you want.  It's just a way for you to keep track of what is what in complex configurations.  For this simple one it won't really be helpful and you can leave it blank if you want.</li>
+	<li>Select the Adsense Ad unit that you wish to use for your share of the ads in any of your guest bloggers posts.</li>
+	<li>Click "Add Advertisement Source"</li>
+	<li>Select your guest bloggers ad.</li>
+	<li>Set your weights to match the agreement you have with your guest blogger.</li>
+	<li>Click "Add Rule Set"</li>
+	<li>Select "Match an author" and click "Add Rule"</li>
+	<li>In the newly added rule select the name of the guest blogger from the drop down list.</li>
+	<li>Click "Add Allocation"</li>
+	<li>Use this allocation for any posts not written by your guest bloggers.</li>
+	<li>Fill in a Description for the Allocation if you want.</li>
+	<li>Select the Adsense Ad unit that you wish to use for any posts not written by your guest bloggers.</li>
+	<li>Click "Save Campaign" and you are done</li>
+</ol>
+<span style="font-size: small;"><span style="line-height: 24px;"><a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-campaign.png"><img class="alignnone size-thumbnail wp-image-600" title="create-campaign" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/create-campaign-e1304452557820-150x150.png" alt="" width="150" height="150" /></a>
+</span></span>
+
+Thats it.  Any posts written by the guest blogger will rotate ads based on the weights you configured.  Any other post will serve only your ad unit.  If you have multiple guest bloggers the process is the same.  Just add an allocation for each that is configured the same as Allocation 1, just change the weights, the authors ad unit and who the author is.  Make sure to leave the Allocation with no rules and only your Ad Unit as the last allocation.
+
+<-- Campaigns, Allocations And Rules -->
+<a title="The Situation" name="situation"></a>
+<h4>The Situation</h4>
+You've downloaded Advertwhirl from <a title="Advertwhirl plugin page - WordPress Gallery" href="http://wordpress.org/extend/plugins/advertwhirl/">WordPress plugin gallery</a> after reading its quite impressive description and being blown away by its screenshots.  You go to the settings and are at a loss as to where to even begin.
+
+The vast list of what you can do with Advertwhirl also can make getting started a daunting task.  Most of the settings are fairly intuitive but the meat of Advertwhirl is Ad Campaigns which ironically enough is also the part that gives people the most trouble, ok maybe not so ironic.
+
+<h4>The Solution</h4>
+Read this tutorial.  Seriously, thats it.  It also wouldn't hurt any to make a test campaign and a test post add an ad slot to the test post with a the short code and play around with the rules and allocations until you have a grasp of things.  If you still have any problems or usage questions you can ask them on the <a title="Advertwhirl Support Forum" href="http://www.mobilesentience.com/support/?mingleforumaction=viewforum&amp;f=12.0 ">Advertwhirl Support Forum</a>.
+
+
+<h4>The Nuts and Bolts</h4>
+<h5>Terms</h5>
+Below are a few terms you should be familiar with before diving into the different sections.<br/>
+<ul style="list-style:circle; padding:5px 5px;">
+	<li>Ad Campaign - A collection of ads and rules which are assigned to ad spots.</li>
+	<li>Ad Slot - a spot in a blog page or post where an ad is displayed.</li>
+	<li>Ad Source - A source of ad units to fill ad slots with.  This could be a static local banner, Adsense ads, Groupon ads etc...</li>
+	<li>Ad Unit - The ad that fills an ad slot during a particular view of a page or post</li>
+	<li>Allocation - a collection of ad sources paired with weights which determine the ratio of how the ad sources are rotated to fill an ad slot with an ad unit.</li>
+	<li>Rules - rules determine which allocation is selected to fill an ad slot</li>
+	<li>RuleSets - Rules are grouped together in rule sets to form complex logic for selecting an allocation</li>
+</ul>
+
+<h5>Understanding Campaigns</h5>
+Campaigns are a collection of ad allocations which share an ad slot(or slots) in your blog.   An example would be a campaign for your Blog with allocations setup for your posts and for each of your guest bloggers.<br/>
+
+<h5>Understanding Allocations</h5>
+An allocation is composed of two parts, Rules and Ad Sources.<br/>
+
+An allocations rules determine whether it matches a particular view of a blog post or page and whether or not that allocation should be used to determine which add will fill an Ad Slot for that view.<br/>
+
+If an allocations Rules match and the allocation is used to fill an ad slot the allocations Ad Sources are used to fill the slot.  The Ad sources are rotated based on their weight.  The rules for rotation are fairly straightforward<br/>
+<br/>
+<ol>
+	<li>If twenty ads have been filled (across all campaigns) since the last sponsor ad has filled an ad slot the slot is filled with one of the sponsor ads.</li>
+	<li>If the first Ad Source has filled fewer ads then its weight it is used to fill the ad slot.</li>
+	<li>If the first Ad Source has filled its weight in ads check the next Ad Source as in step 2</li>
+	<li>If all the Ad Sources have filled their weight reset their counters to zero and fill the slot with an ad from the first ad source.</li>
+</ol><br/>
+
+See pretty simple.  There are a few notes to be aware of but they don't really change the process.<br/>
+
+<ul style="list-style:circle; padding:5px 5px;">
+	<li>If there is only one Ad Source it will be used to fill every ad slot for that allocation, excepting of course the sponsor ads.</li>
+	<li>You can specify the weight for an Ad Source by weight or percent</li>
+	<li>If you mix weights and percents in a single Allocation the total of all percent weights must be less then 100% to allow for the Ad Sources with non-percent weights</li>
+	<li>If you use only percentage weights in an Allocation then the total of weights must be 100% no more, no less. 100% shall be the total weight, and the number of the weighting shall be 100%. 101% shalt not be the weight, neither 99%, excepting that thou then proceed to 100%.  105% shall be right out.</li>
+	<li><strong>MATH WARNING</strong> scary I know.  If you mix weights and percentage weights the weight used in the above rotation algorithm is determined by totaling the percentage weights and totaling the straight weights.  The calculated total weight of all the Ad Sources is the total of the straight weights divided by  1 - (the total of the percentage weights divided by 100) .  The calculated weight for any Ad Source with a percentage weight is the calculated total weight multiplied by the Ad Sources percentage weight divided by 100.
+<ul style="list-style:circle; padding:5px 5px;">
+	<li><em>Example:</em> you have an allocation with 3 Ad Sources.  The first has a weight of 2, the second a weight of 5 and the third a weight of 30%.  The third Ad Source will have its ads rotated using a weight of 3.  <strong>MORE MATH</strong> <em>2 + 5 / (1 - .3) = 7 / .7 = 10.  10 * .3 = 3</em></li>
+	<li>The actual math used is a little come complicated to keep the calculated weights for Ad Sources with percentage weights accurate(odd percents can lead to a weight of 2.7 for instance and how exactly you fill .7 of an Ad Slot is beyond me) by adjusting the order of magnitude for all weights to eliminate non-repeating decimal weights and then factoring the weights so the first Ad Source doesn't have to fill 1000 slots before the second Ad Source is used.  I won't go into the exact math though as the Euclidean algorithm for finding the Greatest Common Factor is beyond the scope of this tutorial.</li>
+</ul>
+</li>
+</ul><br/>
+
+<h5>Understanding Rules</h5>
+Rules are simple and powerful, just not 100% self explanatory.  An Allocation can have zero or more rules grouped together in RuleSets.  An Allocations rules determine whether or not an the Allocation is used to fill an Ad Slot or not.  When an Advertwhirl tries to fill an Ad Slot the Allocations for the campaign assigned to that Ad Slot are checked to see if the Allocation matches.  Starting with the Allocation 1 and working its way down.  Once an Allocation matches it is used to fill the Ad Slot and no further checking is performed.  The method used to determine if an Allocation should fill an Ad Slot or not is below.<br/>
+
+<ol>
+	<li>If the Allocation has no RuleSets it matches.  (To insure that a campaign always fills its Ad Slots ad an Allocation at the end of all the others with no rules.  If nothing else matches it will)</li>
+	<li>If the Allocation has 1 or more RuleSets check each RuleSet to see if the RuleSet matches.</li>
+	<li>A RuleSet matches if all if its Rules match</li>
+	<li>If any RuleSet matches the Allocation matches and no further checking is performed.</li>
+	<li>If no RuleSets match the Allocation doesn't match and Advertwhirl moves on to checking the next Allocation</li>
+	<li>If no Allocations match Advertwhirl checks to see if you have "fill empty ad slots" checked in settings and fills the slot with your default ad source</li>
+	<li>if "fill empty ad slots" isn't enabled or you don't have a default ad source defined the Ad Slot remains empty (in other words no Ad Unit is displayed there for that view)</li>
+</ol><br/>
+
+The simplified version<br/>
+
+<ol>
+	<li>An Allocation matches if <strong>ANY</strong> of its RuleSets match</li>
+	<li>A RuleSet matches if <strong>ALL</strong> of its rules match</li>
+</ol><br/>
+
+For those of you with programming experience or math logic experience the RuleSets are compared with the equivalent of an OR and the rules in each as with an AND.
+
+Here are the Rules
+
+<h6>Author Rule</h6>
+The author rule lets you select an allocation based on the author of post or page.  If the post or page containing the Ad Slot needing to be filled was written by the selected author the rule matches.  If not, well it doesn't.
+
+&nbsp;
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/author_rule.png"><img class="alignnone size-thumbnail wp-image-554" title="author_rule" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/author_rule-e1304368710835-150x15.png" alt="" width="150" height="15" /></a>
+
+<h6>Post Type Rule</h6>
+The post type rule lets you select an allocation based on the type of the post/page containing the Ad Slot.  If you want an Allocation to only be displayed on posts add a Post Type rule set to Post.  Want to only display the Allocation to be fill slots on page set the rule to Page.
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/posttype_rule-e1304369194526.png"><img class="alignnone size-thumbnail wp-image-557" title="posttype_rule" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/posttype_rule-e1304369987481-150x15.png" alt="" width="150" height="15" /></a>
+
+<h6>Category Rule</h6>
+The category rule matches post/page categories in a little more advanced way than the author and post type rules.  The Allocation will fill the ad slot if the post <em>"is a"</em> or <em>"is not a"</em> category.  If you select <em>"is a"</em> the Allocation matches if the post has the selected category set or child, grandchild category set.  The drop down to select category shows the relationship between categories.  Child categories are below and indent from their parent.  In other words the indented categories are considered to be <em>"is a"</em> of their parent/grandparent categories.  If you select <em>"is not a"</em> it works the same only the Allocation will fill a post if it doesn't have the category or any of its descendants set.
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/category_rule.png"><img class="alignnone size-thumbnail wp-image-561" title="category_rule" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/category_rule-e1304376653646-150x15.png" alt="" width="150" height="15" /></a>
+
+<h6>Tag Rule</h6>
+The tag rule works just like the category rule, only since tags don't have parent/child hierarchies <em>"is a"</em> matches if the post has the tag set and <em>"is not a"</em> matches if the post does not have the tag set.
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/tag_rule.png"><img class="alignnone size-thumbnail wp-image-562" title="tag_rule" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/tag_rule-e1304376958630-150x15.png" alt="" width="150" height="15" /></a>
+
+<h6>Location Rule</h6>
+The location rule matches the visitors location.  To use the location rule you need a free api key from the IP Info Database. You can <a href="http://www.ipinfodb.com/register.php" target="_blank">request your key here</a> it is a simple form and they will email the key in a few minutes time.  Once you have the key enter it in the "IP Info Database Key" field in General Settings.
+
+Location rules have 3 settings.  The first sets which part of the visitor's location you are trying to match.  It is possible to match the visitor's Country, State/Region, City or Postal Code.
+
+The next setting is the type of match you want to perform.  The types of matches are <em>"is"</em>, <em>"is not"</em>,<em> "matches regular expression"</em>, <em>"does not match regular expression"</em>.
+
+The third field is the value you are trying to match.
+
+If you made the following location rule <em>"Country" "is" "United States"</em> the rule would match if the visitor is located in the United States otherwise it would not match.
+
+If you made the following location rule <em>"City" "is not" "Denver"</em> the rule would match if the visitor is not located in the Denver otherwise it would not match.
+
+Regular expressions are an advanced way of matching a pattern, such as <em>"802[0-9][0-9]"</em> is a regular expression that would match a 5 digit number(looks like a postal code, doesn't it?) that begins with 802 and ends with any two digits.
+
+Regular expressions are a complex and advanced subject the surface of which can't even be scratched here.  There are a ton of source that our good friend <a title="Friendly Mr Google" href="http://www.google.com">Mr Google</a> can point you to.  Or if there is a particular pattern you want to match for one of your rules you can ask on the <a title="Advertwhirl Support Forum" href="http://www.mobilesentience.com/support/?mingleforumaction=viewforum&amp;f=12.0">Advertwhirl support forum</a>.
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/location_rule.png"><img class="alignnone size-thumbnail wp-image-564" title="location_rule" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/location_rule-e1304378825340-150x16.png" alt="" width="150" height="16" /></a>
+
+<a title="===Link Argument Rule" name="link-argument-rule"></a>
+<h6>Link Argument Rule</h6>
+The link argument rule matches get arguments encoded in a URL.  It is used mainly for external ads to allow you to differentiate external ad slots.  Get arguments are the part of the link that follow the page.  The page and get arguments are separated by a question mark.  The following example link has 2 get arguments
+
+<em>http://www.yourdomain.com/advertwhirl/your_campaign?argument1=some_value&amp;argument2=another_value</em>
+
+the two arguments are <em>"argument1"</em> and <em>"argument2"</em> and have the values <em>"some_value"</em> and <em>"another_value"</em>.
+
+Like the location rule the link argument rule has three parts.  The name of the get argument you want to test, the type of test and the value you want to test against.
+
+the test types are <em>"is equal to"</em>, <em>"is not equal to"</em>, <em>"is greater than"</em>, <em>"is less than"</em>, <em>"is greater than or equal to"</em>, <em>"is less than or equal to"</em>,  <em>"matches regular expression"</em>, <em>"doesn't match regular expression"</em>
+
+All of the equality tests (everything but the 2 regular expression tests) do a normal numerical compare if the link argument contains a numeric value.  ie.. 1 is less than 5, 4 is greater than 3 etc...
+
+If the link argument does not contain a numeric value the equality tests do an alphabetic test.  Greater than means the value comes the argument value comes alphabetically after the test value.  <em>"apple" "is less than" "banana"</em>, "dog" <em>"is greater than" "cat"</em> (and not just because dogs are awesome and cats are snobby little creeps).
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/link_arguments.png"><img class="alignnone size-thumbnail wp-image-566" title="link_arguments" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/link_arguments-e1304381345632-150x15.png" alt="" width="150" height="15" /></a>
+
+<h6>Virtual Path Rule</h6>
+The virtual path rule is only enabled if you have the <a title="Virtual Theme WordPress Plugin" href="http://www.mobilesentience.com/software/oss/virtual-theme/">Virtual Theme</a> plugin installed.  The virtual path rule has 2 settings, the test type and the test value.  The test types are <em>"is"</em>, <em>"is not"</em>, <em>"matches regular expression"</em>, <em>"does not match regular expression"</em>.
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/virtual_path_rule.png"><img class="alignnone size-thumbnail wp-image-568" title="virtual_path_rule" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/virtual_path_rule-e1304382276797-150x15.png" alt="" width="150" height="15" /></a>
+
+<h6>Custom Variable Rule</h6>
+The custom variable rule is only enabled if you have the <a title="Virtual Theme WordPress Plugin" href="http://www.mobilesentience.com/software/oss/virtual-theme/">Virtual Theme</a> plugin installed and works exactly like the link argument rule but instead of matching get arguments it matches <a title="Virtual Theme WordPress Plugin" href="http://www.mobilesentience.com/software/oss/virtual-theme/">Virtual Theme</a> custom variables.
+
+<a href="http://www.mobilesentience.com/wp-content/uploads/2011/05/virtual_path_variable_rule.png"><img class="alignnone size-thumbnail wp-image-569" title="virtual_path_variable_rule" src="http://www.mobilesentience.com/wp-content/uploads/2011/05/virtual_path_variable_rule-e1304382467934-150x15.png" alt="" width="150" height="15" /></a>
+
+<h5>Download Advertwhirl</h5>
+[download id="4" format="2" autop="false"]
+
+<h5>References</h5>
+<a title="Advertwhirl plugin page - Mobile Sentience" href="http://www.mobilesentience.com/software/oss/advertwhirl/">Mobile Sentience Advertwhirl page</a>
+<a title="Advertwhirl plugin page - WordPress Gallery" href="http://wordpress.org/extend/plugins/advertwhirl/">Advertwhirl in the WordPress gallery</a>
+<a title="Install Instructions" href="http://www.mobilesentience.com/2011/04/24/reseller-branding-of-your-wordpress-site/">Tutorial with instructions for installing Advertwhirl Plugin</a>
+
+<-- Adding Ads to Your Posts -->
+<h4>The Situation</h4>
+You've been adding advertisements to your blog posts with a short code using the built-in editor ie... <strong><em>[advertwhirl campaign=your_campaign]</em></strong>.  It was a simple solution to get started and didn't require any editing of your theme templates.  But, you've decided the best way to monetize your blog is to put ads in every post and remembering to insert the short code sometimes just doesn't happen.
+
+<h4>The Solution</h4>
+Modify your theme's single.php template file to easily insert an ad campaigns ads automatically in each post.  Use allocation rules to determine which ads get inserted into which post while insuring that every post gets an appropriate ad and maintaining the consistency of your advertising campaign.
+
+<h4>The Nuts and Bolts</h4>
+While the modification of a themes template files isn't for the faint of heart and is generally reserved for advanced users inserting and Advertwhirl ad into your post automatically is a pretty straightforward endeavor that can be accomplished by most anyone if they only have a little confidence.
+
+<h5>Using the Built-in Theme Editor</h5>
+WordPress has a theme editor that lets you edit your themes template files right through your blogs admin control panel.  To get to the theme editor go to the <strong><em>"Appearance"</em></strong> menu and select <em><strong>"Editor"</strong></em>
+
+Once you have the theme editor open go to the upper right hand corner and select the theme you want to edit.  This should match the theme you are using for your WordPress site.  For this demo we will be editing the default "Twenty Ten" theme.
+
+Right below where you selected your theme you will find a list of templates for the theme.  Click on single.php, this is the template file for single posts.
+
+<h5>Find the_content()</h5>
+Time to put on your brave face and do a little poking around.  You are looking for a line that reads<strong><em> "the_content()"</em></strong> in many themes you will find it directly in single.php.  In some, such as "Twenty Ten" single.php will load another template part that contains <strong><em>"the_content"</em></strong>.
+
+Here is the line you are looking for<br/>
+
+<div class="source-code">&lt;?php the_content(); ?&gt;</div><br/>
+
+If your template for posts is loading a template part which contains the_content you will find a line that has <strong><em>"get_template_part('some_value', 'some_other_value');"</em></strong> and you won't find a line with <em><strong>"the_content();"</strong></em>.  If single.php does have a line that says <strong><em>"the_content();"</em></strong> and also <strong><em>"get_template_part('some_value', 'some_other_value');"</em></strong> don't worry about the get_template_part line, you can just ignore it.  If you don't find <strong><em>"the_content()"</em></strong> you will want to open the template part.  The template part you want to open will be composed of the two parts in get_template_part.<br/>
+
+<div class="source-code">&lt;?php get_template_part('loop', 'single') ?&gt;</div><br/>
+
+In the "Twenty Ten" theme single.php loads a template part named <strong><em>loop-single.php</em></strong>
+
+If your theme has <strong><em>"the_content();"</em></strong> you are ready to go, if not open the template part.  In the case of the "Twenty Ten" theme you want to open loop-single.php.
+
+Once you find the content you can insert the ad campaign at the beginning or end of the post content.  Or if you are a particularly brave soul you can insert the add in the middle of the content.
+
+<h5>Insert advertisement before or after post content - Beginners method</h5>
+The easy method is to insert the <strong><em>"advertwhirl_print_ad();"</em></strong> function before or after <strong><em>"the_content();"</em></strong> The example below will add an advertisement from the <strong><em>"Your_Campaign"</em></strong> ad campaign before and after the post content.  You will want to change <strong><em>"Your_Campaign"</em></strong> to match the name of your campaign.  If you don't want to immediatly print the ad to the visitors browser but need to do something more with it first you can save the ad to a string with <strong><em>"advertwhirl_get_ad()"</em></strong><br/>
+
+<div class="source-code">&lt;?php
+
+advertwhirl_print_ad('Your_Campaign');  // This advertisement will be before your post content
+
+the_content();
+
+advertwhirl_print_ad('Your_Campaign');  // This ad will be after your post content
+
+?&gt;</div><br/>
+
+<div class="source-code">&lt;?php
+
+$ad = advertwhirl_get_ad('Your_Campaign');  // The content of the advertisement will be saved to $ad as a string
+
+$ad = str_replace($what_you_are_looking_for, $what_you_want_it_to_be, $ad); // Change the ad content somehow, prehaps customize it for the visitor
+
+$echo $ad;  // This will actually place the customized ad
+
+the_content();
+
+echo advertwhirl_get_ad("Your_Campaign"); //  This is exactly the same as advertwhirl_print_ad('Your_Campaign');  and placed the ad after your post content
+
+?&gt;</div><br/>
+
+
+<h5>Insert advertisement in the middle of your post content - Advanced method</h5>
+The advanced method really isn't so difficult, it just has a few more steps then the beginners method.  The code that Mobile Sentience is using to insert ads in the middle of its posts is a variation of the <a title="Reference Post" href="http://zedomax.biz/blog/make-money-online/wordpress-hack-how-to-insert-ads-in-the-middle-of-your-content/">code found in this excellent post at zedomax.biz</a>.
+
+The first step is to make sure you place all the code between the &lt;?php and ?&gt; tags that are surrounding <strong><em>the_content();</em></strong>.  If your theme has them all on one line break them up now, also comment out <strong><em>the_comment();</em></strong> command while you are at it by putting <strong><em>//</em></strong> before it.  Make this<br/>
+
+<div class="source-code">&lt;?php the_content(); ?&gt;</div><br/>
+
+look like this<br/>
+
+<div class="source-code">&lt;?php
+//the_content();
+?&gt;</div><br/>
+
+Now add the code to insert your advertisement in the middle of the post content.
+
+This is what you want to end up with<br/>
+
+<div class="source-code">&lt;?php
+//the_content();<br/>
+$adsEvery = 4;      // How many blocks between each of your ads.  The smaller the number the more ads, the larger the fewer<br/>
+$maxAds = 2;       // The maximum number of ads to put in a post.  There is no maximum if $maxAds is -1<br/>
+<br/>
+$content = apply_filters('the_content', $post-&gt;post_content);  //get the post content store in $content<br/>
+$paragraphs = explode("&lt;/p&gt;", $content);  //Separate the content into blocks<br/>
+echo '&lt;div&gt;';<br/>
+<br/>
+$blockCount = 0;    //this is count for number of blocks<br/>
+$adCount = 0;      //this is a variable to keep track of how many ads have been put in the post<br/>
+foreach($paragraphs as $paragraph) {<br/>
+if(preg_match('/&lt;p&gt;/',$paragraph) == 0 &amp;&amp; $blockCount % $adsEvery == 0 &amp;&amp; ($adCount &lt; $maxAds || $maxAds == -1)){<br/>
+$float = $adCount % 2 == 0?"float:left":"float:right";<br/>
+echo ' &lt;div style="width: 300px; height: 250px; padding: 9px 9px 9px 9px;"&gt;';<br/>
+advertwhirl_print_ad('Your_Campaign');  // This is what places the Advertwhirl advertisement<br/>
+echo '&lt;/div&gt;';<br/>
+$adCount++;<br/>
+}<br/>
+echo $paragraph;  //print the block<br/>
+echo '&lt;/div&gt;';<br/>
+$blockCount++;<br/>
+}<br/>
+echo '&lt;/div&gt;';<br/>
+?&gt;</div><br/>
+
+Thats all it takes.  If you want the two lines immediately following <strong><em>//the_content();</em></strong> can be adjusted to configure how your ads appear.
+
+<strong><em>"$adsEvery"</em></strong> controls how many paragraphs of content are between each ad.  The default is to show one ad every 4 paragraphs.<br/>
+
+<div class="source-code">$adsEvery = 4;</div><br/>
+
+<strong><em>"$maxAds"</em></strong> lets you limit how many ads will be displayed in anyone post so you don't overwhelm your readers.  Ads lose potency the further down the post they appear and to many can annoy readers.  The default is to show a maximum of 2 ads.  If you don't want to limit the number of ads that will be shown you can set $maxAds to -1.
+</br>
+
+<div class="source-code">$maxAds = 2;</div><br/>
+
+<h5>References</h5>
+<a title="Advertwhirl plugin page - Mobile Sentience" href="http://www.mobilesentience.com/software/oss/advertwhirl/">Mobile Sentience Advertwhirl page</a><br/>
+<a title="Advertwhirl plugin page - WordPress Gallery" href="http://wordpress.org/extend/plugins/advertwhirl/">Advertwhirl in the WordPress gallery</a><br/>
+<a title="Install Instructions" href="http://www.mobilesentience.com/2011/04/24/reseller-branding-of-your-wordpress-site/">Tutorial with instructions for installing Advertwhirl Plugin</a><br/>
+<a title="WordPress Hack – How to Insert Ads in the Middle of Your Content!" href="http://zedomax.biz/blog/make-money-online/wordpress-hack-how-to-insert-ads-in-the-middle-of-your-content/">Original advanced method code</a><br/>
